@@ -5,12 +5,14 @@ let w = 30;
 let delay = 3;
 let estado = 'menu';
 let img;
-let textX= 730;
-let textY= 780;
-let textZ= 800;
-let textW= 860;
-let textU= 880;
-let imgY= 930;
+let textX= 740;
+let textY= 820;
+let textY1= 845;
+let textY2= 868;
+let textZ= 790;
+let textW= 910;
+let textU= 940;
+let imgY= 1020;
 let fonte;
 //-----------------------------
 let t;
@@ -22,7 +24,7 @@ let erro = 0;
 let r;
 //*************************************
 let startTime;
-let gameDuration = 60000;
+let gameDuration = 20000;
 let gameOver = false;
 
 
@@ -53,7 +55,7 @@ function setup() {
   botaoCreditos.class('botao-creditos');
   
   // Criando um elemento <div> para o texto
-    let textoDiv = createDiv('JOGO DAS FORMAS');
+    let textoDiv = createDiv('JOGO DA BOLINHA');
     textoDiv.class('texto-estilizado');
   
     let canvas = select('canvas');
@@ -97,6 +99,10 @@ function draw() {
   
   //************************************
   
+  fill('rgb(0,0,0)');
+  textSize(12);
+  text("® Tiago de Melo", 398, 580);
+  
 }
 
 function start() {
@@ -106,11 +112,11 @@ function start() {
   fill('black')
   rect(rectX, rectY, rectW, rectH);
   // Desenha o círculo
-  fill(255);
+  fill('rgb(250,223,7)');
   ellipse(t, g, diametro, diametro);
   
-  // Atualiza a posição do círculo
-  t -= speed;
+  
+  t -= speed; // *****Atualiza a posição do círculo
   
   // Verifica se o círculo saiu da tela e reinicia sua posição e tamanho
   if (t <= rectX +20) {
@@ -128,24 +134,31 @@ function mostrarCreditos() {
   rect(rectX, rectY, rectW, rectH);
   
   
-  textSize(20);
+  textSize(22);
   fill('rgb(255,255,255)');
-  text("Creditos",400 , textX);
-  text("Tiago de Melo Monteiro",330, textY);
-  textSize(15);
-  text("Analista e Desenvolvidor de Sistemas",310, textZ);
-  textSize(20);
-  text(" Docente",393, textW);
-  textSize(17);
-  text("Me. Joel de Oliveira Santos",330, textU);
-  strokeWeight(2);
+  text("Creditos",400 , textX);  
   
-  image(img, 325, imgY);
+  textSize(18);
+  text("Analistas e Desenvolvedores de Sistemas",265, textZ);
+  textSize(15);
+  text("Tiago de Melo Monteiro",365, textY);
+  text("Marlon Oliveira Augusto",365, textY1);
+  text("Daniel Lima de Farias",373, textY2);
+
+  textSize(18);
+  text(" Docente",404, textW);
+  textSize(15);
+  text("Me. Joel de Oliveira Santos 1",352, textU);
+  strokeWeight(6);
+  
+  image(img, 380, imgY, 125, 130);
 
   if(textZ >= 170){
     textX--;
     textY--;
     textZ--;
+    textY1--;
+    textY2--;
     textW--;
     textU--;
     imgY--;
@@ -165,7 +178,7 @@ function resetCircle() {
 
 
 
- //**função queé acionada quando o mause é clicado**
+ //****função que é acionada quando o mouse é clicado**
 
 function mousePressed() {
   
